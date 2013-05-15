@@ -19,13 +19,14 @@ public class ParticlesTest extends Sprite
 		this.particlesRenderer = new ParticlesRenderer(this, new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
 		
 		var vo:ParticlesVo;
-		for (var i:int = 0; i < 5000; i++) 
+		for (var i:int = 0; i < 20000; i += 1) 
 		{
 			vo = new ParticlesVo();
-			vo.x = Math.random() * 550;
+			vo.x = Math.random() * (550 + 20) - 20;
 			vo.y = Math.random() * 400;
 			vo.vx = Math.random() * 10 + 1;
-			vo.bitmapData = new Bullet();
+			if (Math.random() < .5) vo.bitmapData = new smoke_clear();
+			else vo.bitmapData = new smoke_black();
 			this.particlesRenderer.addParticles(vo);
 		}
 		this.addEventListener(Event.ENTER_FRAME, loop);
@@ -39,7 +40,7 @@ public class ParticlesTest extends Sprite
 	private function checkVo(vo:ParticlesVo):void
 	{
 		if (vo.x > 550)
-			vo.x = 0;
+			vo.x = -20;
 	}
 	
 	private function loop(event:Event):void 
