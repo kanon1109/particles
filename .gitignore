@@ -1,0 +1,35 @@
+# Build and Release Folders
+bin/
+bin-debug/
+bin-release/
+/bin/*
+/all/*
+/≤‚ ‘/*
+/server/*.pyc
+/test/*.pyc
+*.swf
+*.fla
+*.png
+*.jpg
+*.gif
+*.txt
+*.html
+*.m4v
+*.pyc
+.actionScriptProperties
+.flexProperties
+.flashProjectProperties
+.DS_Store
+.flexLibProperties
+.FlexUnitSettings
+.project
+.sourceMate
+.fxpProperties
+.svn
+
+# Other files and folders
+.settings/
+
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.

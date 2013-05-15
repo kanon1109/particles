@@ -1,4 +1,4 @@
-package  
+package cn.geckos.particles
 {
 import flash.display.BitmapData;
 /**
