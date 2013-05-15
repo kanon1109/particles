@@ -72,7 +72,7 @@ public class ParticlesRenderer
 		var vo:ParticlesVo;
 		for each (vo in this.particlesDict) 
 		{
-			vo.updata();
+			vo.update();
 			pos.x = vo.x;
 			pos.y = vo.y;
 			this.canvasBmd.copyPixels(vo.bitmapData, vo.bitmapData.rect, pos, null, null, true);

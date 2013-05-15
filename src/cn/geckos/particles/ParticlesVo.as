@@ -36,7 +36,7 @@ public class ParticlesVo
 	/**
 	 * 更新数据
 	 */
-	public function updata():void
+	public function update():void
 	{
 		this.x += this.vx;
 		this.y += this.vy;
