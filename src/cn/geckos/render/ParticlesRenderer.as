@@ -4,7 +4,6 @@ import cn.geckos.particles.ParticlesVo;
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.DisplayObjectContainer;
-import flash.geom.Matrix;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.utils.Dictionary;
