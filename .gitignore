@@ -8,7 +8,6 @@ bin-release/
 /server/*.pyc
 /test/*.pyc
 *.swf
-*.fla
 *.png
 *.jpg
 *.gif
