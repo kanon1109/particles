@@ -63,7 +63,7 @@ public class ParticlesRenderer
 		{
 			vo.updata();
 			this.bitmapData.copyPixels(vo.bitmapData, vo.bitmapData.rect, new Point(vo.x, vo.y), null, null, true);
-			callBack.apply(null, [vo]);
+			callBack.call(null, vo);
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class ParticlesTest extends Sprite
 		this.particlesRenderer = new ParticlesRenderer(this, new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
 		
 		var vo:ParticlesVo;
-		for (var i:int = 0; i < 1000; i++) 
+		for (var i:int = 0; i < 5000; i++) 
 		{
 			vo = new ParticlesVo();
 			vo.x = Math.random() * 550;
