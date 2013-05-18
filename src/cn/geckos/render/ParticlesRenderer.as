@@ -1,6 +1,6 @@
 package cn.geckos.render
 {
-import cn.geckos.particles.ParticlesVo;
+import cn.geckos.particles.IParticles;
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.DisplayObjectContainer;
@@ -56,28 +56,54 @@ public class ParticlesRenderer
 	 * 添加粒子
 	 * @param	vo	粒子数据
 	 */
-	public function addParticles(vo:ParticlesVo):void
+	public function addParticles(vo:IParticles):void
 	{
-		this.particlesDict[vo] = vo;
+		if (!this.particlesDict[vo])
+			this.particlesDict[vo] = vo;
 	}
 	
 	/**
 	 * 渲染
 	 */
-	public function render(callBack:Function = null):void
+	public function render():void
 	{
+		if (!this.particlesDict) return;
 		//重新上色
 		this.canvasBmd.fillRect(this.canvasBmd.rect, 0x000000);
-		var vo:ParticlesVo;
+		var vo:IParticles;
 		for each (vo in this.particlesDict) 
 		{
 			vo.update();
 			pos.x = vo.x;
 			pos.y = vo.y;
 			this.canvasBmd.copyPixels(vo.bitmapData, vo.bitmapData.rect, pos, null, null, true);
-			if (callBack is Function)
-				callBack.call(null, vo);
 		}
+	}
+	
+	/**
+	 * 销毁
+	 */
+	public function destroy():void
+	{
+		var vo:IParticles;
+		for each (vo in this.particlesDict) 
+		{
+			vo.destroy();
+			vo = null;
+			delete this.particlesDict[vo];
+		}
+		this.particlesDict = null;
+		
+		this.canvasBmd.dispose();
+		this.canvasBmd = null;
+		
+		if (this.canvas.parent)
+			this.canvas.parent.removeChild(this.canvas);
+		this.canvas = null;
+		
+		this.pos = null;
+		this.viewPort = null;
+		this.parent = null;
 	}
 }
 }
