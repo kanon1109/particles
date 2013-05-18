@@ -18,7 +18,7 @@ public class ParticlesTest extends Sprite
 	{
 		this.particlesRenderer = new ParticlesRenderer(this, new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
 		var vo:ParticlesVo;
-		for (var i:int = 0; i < 10000; i += 1) 
+		for (var i:int = 0; i < 12000; i += 1) 
 		{
 			vo = new ParticlesVo();
 			vo.x = Math.random() * (550 + 20) - 20;
@@ -30,7 +30,6 @@ public class ParticlesTest extends Sprite
 		}
 		this.addEventListener(Event.ENTER_FRAME, loop);
 		this.addChild(new Stats());
-		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
 	}
 	

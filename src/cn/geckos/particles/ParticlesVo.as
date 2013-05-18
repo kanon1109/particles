@@ -1,6 +1,7 @@
 package cn.geckos.particles
 {
 import flash.display.BitmapData;
+import flash.geom.Rectangle;
 /**
  * ...粒子数据
  * @author Kanon
@@ -15,6 +16,8 @@ public class ParticlesVo implements IParticles
 	private var _x:Number;
 	/*y坐标*/
 	private var _y:Number;
+	/*位图的范围 用于缓存bitmapData的 范围*/
+	private var _rect:Rectangle;
 	/*位图数据*/
 	private var _bitmapData:BitmapData;
 	public function ParticlesVo() 
@@ -78,6 +81,13 @@ public class ParticlesVo implements IParticles
 	public function set bitmapData(value:BitmapData):void 
 	{
 		_bitmapData = value;
+		this._rect = _bitmapData.rect;
+	}
+	
+	public function get rect():Rectangle{ return _rect; }
+	public function set rect(value:Rectangle):void 
+	{
+		_rect = value;
 	}
 }
 }

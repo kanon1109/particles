@@ -25,12 +25,14 @@ public class ParticlesRenderer
 	private var particlesDict:Dictionary;
 	//缓存粒子位置的point
 	private var pos:Point;
+	//位图范围
+	private var rect:Rectangle;
 	public function ParticlesRenderer(parent:DisplayObjectContainer, viewPort:Rectangle) 
 	{
 		this.parent = parent;
 		this.viewPort = viewPort;
-		this.initData();
 		this.initBitmap();
+		this.initData();
 	}
 	
 	/**
@@ -40,6 +42,7 @@ public class ParticlesRenderer
 	{
 		this.particlesDict = new Dictionary();
 		this.pos = new Point();
+		this.rect = this.canvasBmd.rect;
 	}
 	
 	/**
@@ -68,16 +71,18 @@ public class ParticlesRenderer
 	public function render():void
 	{
 		if (!this.particlesDict) return;
+		this.canvasBmd.lock();
 		//重新上色
-		this.canvasBmd.fillRect(this.canvasBmd.rect, 0x000000);
+		this.canvasBmd.fillRect(this.rect, 0x000000);
 		var vo:IParticles;
 		for each (vo in this.particlesDict) 
 		{
 			vo.update();
 			pos.x = vo.x;
 			pos.y = vo.y;
-			this.canvasBmd.copyPixels(vo.bitmapData, vo.bitmapData.rect, pos, null, null, true);
+			this.canvasBmd.copyPixels(vo.bitmapData, vo.rect, pos, null, null, true);
 		}
+		this.canvasBmd.unlock();
 	}
 	
 	/**

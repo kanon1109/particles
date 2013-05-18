@@ -1,6 +1,7 @@
 package cn.geckos.particles 
 {
 import flash.display.BitmapData;
+import flash.geom.Rectangle;
 	
 /**
  * ...
@@ -27,9 +28,16 @@ public interface IParticles
 	function set bitmapData(value:BitmapData):void;
 	
 	/**
+	 * 位图的范围 用于缓存bitmapData的 范围
+	 */
+	function get rect():Rectangle;
+	function set rect(value:Rectangle):void;
+	
+	/**
 	 * 实时更新
 	 */
 	function update():void;
+	
 	/**
 	 * 销毁
 	 */
