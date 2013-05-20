@@ -83,7 +83,8 @@ public class ParticlesVo implements IParticles
 	public function set bitmapData(value:BitmapData):void 
 	{
 		_bitmapData = value;
-		this._rect = _bitmapData.rect;
+		if (_bitmapData)
+			this._rect = _bitmapData.rect;
 	}
 	
 	public function get rect():Rectangle{ return _rect; }
