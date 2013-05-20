@@ -14,11 +14,12 @@ import net.hires.debug.Stats;
 public class ParticlesTest extends Sprite 
 {
 	private var particlesRenderer:ParticlesRenderer;
+	private var lastVo:ParticlesVo;
 	public function ParticlesTest() 
 	{
 		this.particlesRenderer = new ParticlesRenderer(this, new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
 		var vo:ParticlesVo;
-		for (var i:int = 0; i < 12000; i += 1) 
+		for (var i:int = 0; i < 1; i += 1) 
 		{
 			vo = new ParticlesVo();
 			vo.x = Math.random() * (550 + 20) - 20;
@@ -28,6 +29,7 @@ public class ParticlesTest extends Sprite
 			else vo.bitmapData = new smoke_black();
 			this.particlesRenderer.addParticles(vo);
 		}
+		lastVo = vo;
 		this.addEventListener(Event.ENTER_FRAME, loop);
 		this.addChild(new Stats());
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
@@ -35,7 +37,8 @@ public class ParticlesTest extends Sprite
 	
 	private function keyDownHandler(event:KeyboardEvent):void 
 	{
-		this.particlesRenderer.destroy();
+		//this.particlesRenderer.destroy();
+		this.particlesRenderer.removeParticles(lastVo);
 	}
 	
 	private function loop(event:Event):void 

@@ -56,13 +56,26 @@ public class ParticlesRenderer
 	}
 	
 	/**
-	 * 添加粒子
+	 * 添加一个粒子
 	 * @param	vo	粒子数据
 	 */
 	public function addParticles(vo:IParticles):void
 	{
 		if (!this.particlesDict[vo])
 			this.particlesDict[vo] = vo;
+	}
+	
+	/**
+	 * 删除一个粒子
+	 * @param	vo	粒子数据
+	 */
+	public function removeParticles(vo:IParticles):void
+	{
+		if (this.particlesDict[vo])
+		{
+			delete this.particlesDict[vo];
+			vo.destroy();
+		}
 	}
 	
 	/**

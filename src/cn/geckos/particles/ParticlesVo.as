@@ -52,8 +52,10 @@ public class ParticlesVo implements IParticles
 	 */
 	public function destroy():void
 	{
-		this.bitmapData.dispose();
-		this.bitmapData = null;
+		if (this._bitmapData)
+			this._bitmapData.dispose();
+		this._bitmapData = null;
+		this._rect = null;
 	}
 	
 	/**
