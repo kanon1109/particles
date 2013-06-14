@@ -88,9 +88,5 @@ public class ParticlesVo implements IParticles
 	}
 	
 	public function get rect():Rectangle{ return _rect; }
-	public function set rect(value:Rectangle):void 
-	{
-		_rect = value;
-	}
 }
 }

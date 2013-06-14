@@ -25,13 +25,11 @@ public interface IParticles
 	 * 位图数据
 	 */
 	function get bitmapData():BitmapData;
-	function set bitmapData(value:BitmapData):void;
 	
 	/**
 	 * 位图的范围 用于缓存bitmapData的 范围
 	 */
 	function get rect():Rectangle;
-	function set rect(value:Rectangle):void;
 	
 	/**
 	 * 实时更新
