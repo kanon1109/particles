@@ -18,6 +18,8 @@ public class MovieClipParticles implements IParticles
 	private var _x:Number;
 	/*y坐标*/
 	private var _y:Number;
+	/*位图的范围 用于缓存bitmapData的 范围*/
+	private var _rect:Rectangle;
 	/*位图数据*/
 	private var _bitmapData:BitmapData;
 	private var bitmapVector:Vector.<BitmapData>;
@@ -31,6 +33,7 @@ public class MovieClipParticles implements IParticles
 		this.bitmapVector = bitmapVector;
 		this._totalFrames = bitmapVector.length;
 		this._bitmapData = this.bitmapVector[this._currentFrame - 1];
+		this._rect = this._bitmapData.rect;
 	}
 	
 	/**
@@ -83,10 +86,7 @@ public class MovieClipParticles implements IParticles
 		for (i = 1; i <= totalFrames; i += 1)
 		{
 			movieClip.gotoAndStop(i);
-			if (!bitmapData)
-				bitmapData = new BitmapData(maxWidth, maxHeight, true, 0xFFFFFF);
-			else
-				bitmapData = bitmapData.clone();
+			bitmapData = new BitmapData(maxWidth, maxHeight, true, 0xFFFFFF);
 			bitmapData.draw(movieClip, matrix);
 			vect.push(bitmapData);
 		}
@@ -101,6 +101,22 @@ public class MovieClipParticles implements IParticles
 		this.x += this.vx;
 		this.y += this.vy;
 		this.currentFrame++;
+	}
+	
+	/**
+	 * 下一帧
+	 */
+	public function nextFrame():void
+	{
+		this.currentFrame++;
+	}
+	
+	/**
+	 * 下一帧
+	 */
+	public function prevFrame():void
+	{
+		this.currentFrame--;
 	}
 	
 	/**
@@ -148,7 +164,7 @@ public class MovieClipParticles implements IParticles
 	/**
 	 * 矩形范围
 	 */
-	public function get rect():Rectangle { return _bitmapData.rect; }
+	public function get rect():Rectangle { return _rect; }
 	
 	/**
 	 * 当前帧
@@ -159,7 +175,7 @@ public class MovieClipParticles implements IParticles
 		_currentFrame = value;
 		if (_currentFrame <= 0) _currentFrame = 1;
 		else if (_currentFrame > this._totalFrames) _currentFrame = 1;
-		this._bitmapData = this.bitmapVector[_currentFrame -1];
+		this._bitmapData = this.bitmapVector[_currentFrame - 1];
 	}
 	
 	/**
