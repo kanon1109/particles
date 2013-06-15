@@ -100,7 +100,7 @@ public class MovieClipParticles implements IParticles
 	{
 		this.x += this.vx;
 		this.y += this.vy;
-		this.currentFrame++;
+		//this.currentFrame++;
 	}
 	
 	/**
