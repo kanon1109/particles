@@ -132,6 +132,7 @@ public class MovieClipParticles implements IParticles
 			bitmapData.dispose();
 			this.bitmapVector.splice(i, 1);
 		}
+		this._rect = null;
 		if (this._bitmapData)
 			this._bitmapData.dispose();
 		this._bitmapData = null;
