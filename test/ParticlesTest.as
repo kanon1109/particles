@@ -24,8 +24,9 @@ public class ParticlesTest extends Sprite
 		this.particlesRenderer = new ParticlesRenderer(this, new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
 		var vo:ParticlesVo;
 		var mc:MovieClip = new MC();
-		var vect:Vector.<BitmapData> = MovieClipParticles.fromMovieClip(mc);
-		for (var i:int = 0; i < 1; i += 1) 
+		var vect:Vector.<BitmapData> = MovieClipParticles.drawMovieClip(mc);
+		var mcPvo:MovieClipParticles;
+		for (var i:int = 0; i < 100; i += 1) 
 		{
 			/*vo = new ParticlesVo();
 			vo.x = Math.random() * (550 + 20) - 20;
@@ -34,7 +35,7 @@ public class ParticlesTest extends Sprite
 			if (Math.random() < .5) vo.bitmapData = new smoke_clear();
 			else vo.bitmapData = new smoke_black();
 			this.particlesRenderer.addParticles(vo);*/
-			var mcPvo:MovieClipParticles = new MovieClipParticles(vect);
+			mcPvo = new MovieClipParticles(vect);
 			mcPvo.x = Math.random() * (550 + 20) - 20;
 			mcPvo.y = Math.random() * 400;
 			//mcPvo.vx = -Math.random() * 2;

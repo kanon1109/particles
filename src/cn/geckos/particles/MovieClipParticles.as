@@ -52,7 +52,7 @@ public class MovieClipParticles implements IParticles
 	 * @param	movieClip	需要转换的mc
 	 * @return	位图序列
 	 */
-	public static function fromMovieClip(movieClip:MovieClip):Vector.<BitmapData>
+	public static function drawMovieClip(movieClip:MovieClip):Vector.<BitmapData>
 	{
 		var totalFrames:int = movieClip.totalFrames;
 		var maxWidth:Number = 0;
@@ -100,7 +100,7 @@ public class MovieClipParticles implements IParticles
 	{
 		this.x += this.vx;
 		this.y += this.vy;
-		//this.currentFrame++;
+		this.currentFrame++;
 	}
 	
 	/**
